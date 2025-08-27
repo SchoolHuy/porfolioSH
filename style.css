@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  font-family: "Montserrat", sans-serif;
+}
+:root {
+  --bg-color: #080808;
+  --second-bg-color: #101010;
+  --text-color: #ffffff;
+  --main-color: #0ca4ea;
+}
+
+html {
+  font-size: 60%;
+  overflow-x: hidden;
+}
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+.header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 4rem 15%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+#menu-icon{
+  font-size: 3.5rem;
+  color: var(--main-color);
+  display: none;
+}
+.logo {
+  font-size: 4rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  color: #fff; /* màu mặc định */
+}
+
+/* "Mã" có gradient sẵn */
+.logo .ma {
+  background: linear-gradient(270deg, #0ca4ea, #ff1d15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: 0.3s ease-in-out;
+}
+
+/* "SHUY" ban đầu trắng */
+.logo .shuy {
+  color: #fff;
+  transition: 0.3s ease-in-out;
+}
+
+/* Khi hover thì "Mã" đổi thành trắng */
+.logo:hover .ma {
+  background: none;
+  -webkit-text-fill-color: #fff;
+  color: #fff;
+}
+
+/* Khi hover thì "SHUY" đổi thành gradient */
+.logo:hover .shuy {
+  background: linear-gradient(270deg, #0ca4ea, #ff1d15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.logo:hover{
+  transform: scale(1.2);
+}
+span{
+  background: linear-gradient(270deg, #0ca4ea, #ff1d15);
+  background-clip: text;
+  color: transparent;  
+}
+.navbar a {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-left: 3rem;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid transparent; 
+  border-radius: 3rem;           
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.navbar a:hover {
+  color: var(--text-color);
+  background-color: var(--main-color);
+  transform: scale(1.1); 
+  box-shadow: 0 0 15px var(--main-color),
+              0 0 30px var(--main-color),
+              0 0 45px var(--main-color);
+  border-color: var(--main-color);
+}
+.gradient-btn{
+  font-size: 1.8rem;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  border-radius: 3rem ;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  color: black;
+  border: none;
+  text-wrap: nowarp;
+}
+.gradient-btn:hover{
+  transform: scale(1.1);
+  background: linear-gradient(270deg, #0ca4ea, #ff1d15);
+}
+
+section{
+  min-height: 100vh;
+  padding: 10rem 15%;
+}
+.home{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15rem;
+}
+.home-content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+.home-content h1{
+  font-size: 8rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  line-height: 1;
+}
+.home-content h3{
+  margin: 1rem 0;
+  font-size: 4rem;
+}
+.home-content p{
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.8;
+}
+/* KHỐI ẢNH TRÒN + GLOW */
+.home-img{
+  --size: 28vw;                 /* responsive theo chiều rộng màn hình */
+  width: var(--size);
+  height: var(--size);          /* bắt buộc bằng width để không bị elip */
+  min-width: 280px;             /* không nhỏ quá trên mobile */
+  min-height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  perspective: 1000px;
+
+  border: 4px solid #afafaf;
+  /* glow xanh như ban đầu */
+  animation: neonGlow 1.5s infinite alternate;
+}
+
+/* KHỐI LẬT 3D CHỨA 2 ẢNH */
+.home-img .flip{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  transition: transform .8s ease;
+}
+
+/* HOVER: lật 180deg để ảnh sau hiện ra */
+.home-img:hover .flip{
+  transform: rotateY(180deg);
+}
+
+/* HAI ẢNH CHỒNG LÊN NHAU */
+.home-img img{
+  position: absolute;
+  inset: 0;                    /* top/right/bottom/left: 0 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Ảnh sau quay ngược để ẩn khi chưa hover */
+.home-img .back{
+  transform: rotateY(180deg);
+}
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 25px #818e92,
+                0 0 50px #818e92,
+                0 0 100px #818e92;
+  }
+  100% {
+    box-shadow: 0 0 35px #446f99,
+                0 0 70px #446f99,
+                0 0 120px #446f99
+  }
+}
+.social-icons a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    padding: 1rem;
+    background: transparent;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    color: var(--main-color);
+    margin: 3rem 0.5rem;
+    transition: 0.3s ease-in-out;
+  }
+  .social-icons a:hover{
+    color: var(--text-color);
+    background-color: var(--main-color);
+    transform: scale(1.2)translate(-5px);
+    box-shadow: 0 0 25px var(--main-color);
+  }
+  .btn-group{
+    display: flex;
+    gap : 1.5rem;
+  }
+  .btn{
+    display: inline-block;
+    padding: 1rem 3rem;
+    background-color: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+    border-radius: 3rem;
+    font-size: 1.8rem;
+    color: black;
+    border: 2px solid transparent;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+  }
+  .btn:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color);
+  }
+  .btn-group a:nth-of-type(2){
+    background-color: black;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    box-shadow: 0 0 25px transparent;
+  }
+   .btn-group a:nth-of-type(2):hover{
+    box-shadow: 0 0 25px transparent;
+    background-color: var(--main-color);
+    color: black;
+
+   }
