@@ -41,7 +41,7 @@ body {
 }
 .logo {
   font-size: 4rem;
-  font-weight: 800;
+  font-weight: 700;
   cursor: pointer;
   transition: 0.3s ease-in-out;
   color: #fff; /* màu mặc định */
@@ -75,7 +75,7 @@ body {
   -webkit-text-fill-color: transparent;
 }
 .logo:hover{
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 span{
   background: linear-gradient(270deg, #0ca4ea, #ff1d15);
@@ -148,7 +148,7 @@ section{
 }
 .home-content p{
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.8;
 }
 /* KHỐI ẢNH TRÒN + GLOW */
@@ -263,3 +263,82 @@ section{
     color: black;
 
    }
+   .about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+    background: var(--second-bg-color);
+   }
+  .about-img {
+  --size: 28vw;
+  width: var(--size);
+  height: var(--size);
+  min-width: 280px;
+  min-height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 4px solid #afafaf;
+
+  /* Glow mặc định chạy liên tục */
+  animation: aboutGlow 1.5s infinite alternate;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* ẢNH BÊN TRONG */
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Hover: chỉ thêm phóng to */
+.about-img:hover {
+  transform: scale(1.05);
+}
+
+/* Keyframes glow */
+@keyframes aboutGlow {
+  0% {
+    box-shadow: 0 0 25px #818e92,
+                0 0 50px #818e92,
+                0 0 100px #818e92;
+  }
+  100% {
+    box-shadow: 0 0 35px #446f99,
+                0 0 70px #446f99,
+                0 0 120px #446f99
+  }
+}
+   .about-content h2{
+    font-size: 7rem;
+    text-align: left;
+   }
+   .about-content p{
+    font-size: 1.8rem;
+   }
+   .about-content .btn{
+    margin: 3rem 0;
+   }
+   *::-webkit-scrollbar {
+  width: 15px;
+  height: 12px;
+   }
+
+  *::-webkit-scrollbar-track {
+    background: var(--second-bg-color);
+    border-radius: 999px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 999px;
+    border: 3px solid var(--second-bg-color); /* tạo khoảng cách giữa thumb và track */
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: #19b6ff; /* sáng hơn chút khi hover */
+  }
